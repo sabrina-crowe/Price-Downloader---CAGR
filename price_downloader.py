@@ -1,17 +1,23 @@
 import pandas as pd
 import yfinance as yf
 
+#activates the code upon button press
 def download():
+    #takes in the user input string of stocks
     tickerString = entry1.get()
+    #splits them by comma, each ticker is a element in the list
     tickers = tickerString.split(", ")
     downloader(tickers)
+    #tells the user when the task has been completed. This can get a little goofy if the program is used multiple times
     T.insert(tk.END, "Prices Downloaded!")
 
-#loop through every ticker in list
 def downloader(tickers):
+    #empty output dataframe
     outdf = pd.DataFrame()
+    #pull start and end years
     start = entry2.get()
     end = entry3.get()
+    #loop through list
     for j in tickers:
         #created for formatting
         lf = pd.DataFrame()
@@ -29,6 +35,7 @@ def downloader(tickers):
     name = entry4.get()
     outdf.to_csv(name+'.csv')
 
+#GUI
 import tkinter as tk
 
 root = tk.Tk()
